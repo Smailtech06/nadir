@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carte Visite Digital</title>
+   
+</head>
+<body>
+    
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+    margin: 0;
+     margin-top: 140px;
+}
+
+.card {
+    width: 320px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding: 20px;
+    text-align: center;
+}
+
+/* تصمم خلفية الهيدر */
+.header {
+    background-image: url('header-background.jpg'); /* استبدلها بخلفية مناسبة */
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+    border-radius: 20px 20px 0 0; /* استدارة الحواف العلوية */
+    color: white;
+    text-align: center;
+    position: relative;
+}
+
+/* تصميم صورة البروفايل داخل دائرة */
+.profile-pic {
+    width: 80px;
+    height: 80px;
+    background-color: white;
+    border-radius: 50%;
+    margin: 0 auto 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.profile-icon {
+    width: 100%;
+    height: 100%;
+        border-radius: 50%;
+    
+    display: flex;
+
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* تصميم النص */
+.header h2 {
+    margin: 10px 0 5px;
+    font-size: 1.4em;
+    color: white;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* ظل للنص */
+
+}
+
+.header p {
+    margin: 3px 0;
+    color: #ddd; /* لون أفتح للنص */
+    font-size: 0.9em;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* ظل للنص */
+
+}
+
+/* تصميم الأزرار */
+.contact-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.contact-buttons button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    background-color: white;
+    color: #007bff;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease;
+}
+
+.contact-buttons button:hover {
+    transform: translateY(-2px);
+}
+
+
+.description {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.social-media {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.social-media a {
+    display: inline-block; /* يجعل العناصر داخل الرابط تتصرف ككتل */
+    padding: 10px; /* إضافة مسافة داخلية */
+    border: 1px solid #ccc; /* إطار رمادي خفيف حول الأيقونات */
+    border-radius: 8px; /* زوايا دائرية للإطار */
+    margin: 0 5px; /* إضافة هوامش جانبية لفصل الأيقونات */
+    transition: background-color 0.3s; /* تأثير انتقال لخلفية الأيقونة */
+}
+
+.social-media a:hover {
+    background-color: #f0f0f0; /* تغيير لون الخلفية عند التحويم */
+}
+
+.social-media a img {
+    width: 30px; /* عرض الأيقونة */
+    margin: 0; /* إزالة الهوامش */
+}
+
+
+.appointment {
+    background-image: url('s.webp');   
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+    border-radius: 20px 20px 0 0; /* استدارة الحواف العلوية */
+    color: white;
+    text-align: center;
+    position: relative;
+        margin-top: 20px;
+
+}
+
+.appointment h3, .appointment p {
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* ظل للنص */
+}
+
+
+
+
+.appointment button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.contact-info {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+form {
+    margin-top: 20px;
+}
+
+form label {
+    display: block;
+    margin: 5px 0 3px;
+    font-weight: bold;
+}
+
+form input, form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+form button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #28a745;
+    color: white;
+    cursor: pointer;
+}
+
+
+
+.qrcode-container {
+    display: none; /* يتم إخفاء رمز QR افتراضياً */
+    text-align: center;
+    margin-top: 20px;
+}
+
+
+    </style>
+
+<div class="card">
+<div class="header">
+    <div class="profile-pic">
+        <img src="profile.png" alt="Profile Icon" class="profile-icon">
+    </div>
+    <h2>Nadir Ben Mahieddine</h2>
+    <p>Carte de visite digitale, exemple</p>
+    <p><i class="fas fa-map-marker-alt"></i> Algeria, Oran</p>
+</div>
+
+<div class="contact-buttons">
+    <button onclick="makeCall()">Appeler</button>
+    <button onclick="showContact()">Coordonnées</button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <p class="description">
+        Boostez votre business avec votre carte de visite multifonction  🚀 100% Made in Oran 🇩🇿
+    </p>
+
+    <div class="social-media">
+        <a href="#"><img src="facebook-icon.png" alt="Facebook"></a>
+        <a href="#"><img src="instagram-icon.png" alt="Instagram"></a>
+        <a href="#"><img src="tiktok.png" alt="tiktok"></a>
+        <a href="#"><img src="phone-icon.png" alt="phone"></a>
+            <a href="#" onclick="generateQRCode()"><img src="qrcode-icon.png" alt="QR Code"></a>
+
+    </div>
+
+
+<div id="qrcode" class="qrcode-container"></div> <!-- عنصر لعرض رمز QR -->
+
+
+    <div class="appointment">
+        <h3>Rencontrons nous !</h3>
+        <p>Prenez rendez-vous rapidement et simplement.</p>
+        <button onclick="openAppointment()">Prendre rendez-vous</button>
+    </div>
+
+    <div class="contact-info">
+        <p>Phone: <a href="tel:0557550246">0557550246</a></p>
+        <p>Website: <a href="https://esily.net">esily.net</a></p>
+    </div>
+    
+    
+  
+
+
+    
+    <form id="contactForm">
+        <h3>Contactez-nous</h3>
+        <label for="name">Nom:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" required></textarea>
+        <button type="submit">Envoyer</button>
+    </form>
+
+</div>
+
+<script>
+document.getElementById('contactForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+
+    const emailBody = `Nom: ${name}\nEmail: ${email}\nMessage: ${message}`;
+
+    window.location.href = `mailto:Nadirasmo3100@hotmail.com?subject=Message from Digital Card&body=${encodeURIComponent(emailBody)}`;
+});
+
+function makeCall() {
+    window.location.href = "tel:0557550246";
+}
+
+function showContact() {
+    alert("Coordonnées:\nPhone: 0557550246\nWebsite: esily.net");
+}
+
+function openAppointment() {
+    window.open('https://esily.net', '_blank');
+}
+
+
+
+function generateQRCode() {
+    const qrContainer = document.getElementById("qrcode");
+    
+    // تحقق مما إذا كان رمز QR موجودًا
+    if (qrContainer.style.display === "block") {
+        qrContainer.style.display = "none"; // إخفاء رمز QR إذا كان مرئيًا
+        qrContainer.innerHTML = ""; // تنظيف المحتوى
+    } else {
+        qrContainer.innerHTML = ""; // تنظيف أي رمز QR موجود
+        
+        // توليد رمز QR للرابط الحالي
+        const qrCode = new QRCode(qrContainer, {
+            text: window.location.href, // الرابط الحالي للصفحة
+            width: 128,
+            height: 128,
+            correctLevel: QRCode.CorrectLevel.H // مستوى التصحيح (اختياري)
+        });
+
+        // إظهار عنصر رمز QR
+        qrContainer.style.display = "block";
+
+        // إضافة حدث لتحميل رمز QR عند الضغط عليه
+        qrContainer.querySelector('canvas').addEventListener('click', function() {
+            const link = document.createElement('a');
+            link.href = this.toDataURL('image/png'); // تحويل الكانفاس إلى رابط صورة
+            link.download = 'qr_code.png'; // اسم الملف عند التحميل
+            link.click(); // بدء التحميل
+        });
+    }
+}
+
+
+
+
+
+</script>
+</body>
+</html>
